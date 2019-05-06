@@ -1,17 +1,24 @@
-jQuery(document).ready(function() {
+/**
+* dashboard.backend
+* @author Deux Huit Huit
+*/
+(function ($) {
 
-	var dashboard_menu_item = jQuery('#nav a[href$="/extension/dashboard/index/"]');
-	var dashboard_menu_group = dashboard_menu_item.parents('li:last');
+	'use strict';
 
-	// kill the subnav
-	dashboard_menu_group.find('ul, svg').remove();
+	var init = function () {
+		var nav = window.Symphony.Elements.nav;
+		var link = $('<div />').attr({
+			class: 'link'
+		});
 
-	dashboard_menu_group
-		.css('cursor', 'pointer')
-		.remove()
-		.prependTo('#nav ul.content')
-		.bind('click', function() {
-			window.location.href = dashboard_menu_item.attr('href');
-		})
+		link.append($('<a />').attr({
+			href: window.Symphony.Context.get('symphony') + '/extension/dashboard/index/'
+		}).text(window.Symphony.Language.get('Dashboard')));
 
-});
+		nav.find('> ul').prepend(link);
+	};
+
+	$(init);
+
+})(jQuery);

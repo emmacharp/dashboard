@@ -88,22 +88,6 @@ Class Extension_Dashboard extends Extension{
 		);
 	}
 
-	public function fetchNavigation() {
-		return array(
-			array(
-				'name'		=> __('Dashboard'),
-				'type'		=> 'content',
-				'children'	=> array(
-					array(
-						'link'		=> '/index/',
-						'name'		=> __('Dashboard'),
-						'visible'	=> 'yes'
-					),
-				)
-			)
-		);
-	}
-
 	public function append_assets($context) {
 		$page = Administration::instance()->Page;
 		$page->addStylesheetToHead(URL . '/extensions/dashboard/assets/dashboard.backend.css', 'screen', 666);

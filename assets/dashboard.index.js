@@ -29,7 +29,7 @@ var Dashboard = {
 		this.drawer = jQuery('#drawer-dashboard');
 
 		// Edit Mode button
-		jQuery('#context').on('click', 'a.edit-mode', function(e) {
+		jQuery('#contents-actions').on('click', 'a.edit-mode', function(e) {
 			e.preventDefault();
 			self.edit_mode = !self.edit_mode;
 
@@ -50,7 +50,7 @@ var Dashboard = {
 		});
 
 		// Create New button
-		jQuery('#context').on('change', 'select[name="panel-type"]', function(e) {
+		jQuery('#contents-actions').on('change', 'select[name="panel-type"]', function(e) {
 			e.preventDefault();
 			var type = jQuery(this).val();
 			if(type === '') return;
@@ -111,7 +111,7 @@ var Dashboard = {
 		});
 
 		// Panel name
-		jQuery('#context').on('keyup change', '#drawer-dashboard input[name="label"]', function(e) {
+		jQuery('#contents-actions').on('keyup change', '#drawer-dashboard input[name="label"]', function(e) {
 			var name = jQuery(e.target).val();
 			var title = jQuery('#drawer-dashboard h3 span');
 			if(name) {
@@ -143,14 +143,14 @@ var Dashboard = {
 
 		jQuery.ajax({
 			type: 'POST',
-			url: Symphony.Context.get('root') + '/symphony/extension/dashboard/save_order/',
+			url: window.Symphony.Context.get('root') + '/symphony/extension/dashboard/save_order/',
 			data: post_data,
 		});
 
 	},
 
 	resetPanelType: function() {
-		jQuery('#context select[name="panel-type"]').val('');
+		jQuery('#contents-actions select[name="panel-type"]').val('');
 	},
 
 	hideEditForm: function(callback, enable_dashboard) {

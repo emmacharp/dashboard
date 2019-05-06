@@ -57,9 +57,9 @@ Class contentExtensionDashboardIndex extends AdministrationPage {
 
 			$actions = array();
 			$actions[] = Widget::Anchor(
-				Widget::SVGIcon('edit') . '<span><span>' . __('Enable Editing') . '</span></span>',
+				Widget::SVGIcon('edit'),
 				'#',
-				__('Disable Editing'),
+				__('Enable Editing'),
 				'edit-mode button'
 			);
 			$actions[] = Widget::Select('panel-type', $panel_types_options);
