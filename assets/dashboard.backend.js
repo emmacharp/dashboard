@@ -16,7 +16,7 @@
 			href: window.Symphony.Context.get('symphony') + '/extension/dashboard/index/'
 		}).text(window.Symphony.Language.get('Dashboard')));
 
-		nav.find('> ul').prepend(link);
+		nav.find('> ul').first().prepend(link);
 	};
 
 	$(init);
