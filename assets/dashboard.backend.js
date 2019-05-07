@@ -8,9 +8,7 @@
 
 	var init = function () {
 		var nav = window.Symphony.Elements.nav;
-		var link = $('<div />').attr({
-			class: 'link'
-		});
+		var link = $('<li />');
 
 		link.append($('<a />').attr({
 			href: window.Symphony.Context.get('symphony') + '/extension/dashboard/index/'
