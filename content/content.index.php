@@ -68,10 +68,8 @@ Class contentExtensionDashboardIndex extends AdministrationPage {
 		$this->appendSubheading($welcome . ', ' . $author->get('first_name'), $actions);
 		$this->insertDrawer(Widget::Drawer('dashboard', 'Dashboard', new XMLElement('span', ''), 'closed', time()), 'horizontal', false);
 
-		$container = new XMLElement('div', null, array('id' => 'dashboard', 'class' => 'two columns'));
-
-		$primary = new XMLElement('div', null, array('class' => 'primary column sortable-container'));
-		$secondary = new XMLElement('div', null, array('class' => 'secondary column sortable-container'));
+		$primary = $this->Primary->setAttribute('class', 'sortable-container');
+		$secondary = new XMLElement('section', null, array('id' => 'secondary', 'class' => 'sortable-container'));
 
 		$panels = Extension_Dashboard::getPanels();
 
@@ -86,10 +84,8 @@ Class contentExtensionDashboardIndex extends AdministrationPage {
 
 		}
 
-		$container->appendChild($primary);
-		$container->appendChild($secondary);
-		$this->Form->appendChild($container);
-
+		$this->Form->setAttribute('id', 'dashboard');
+		$this->Form->appendChild($secondary);
 	}
 
 }
