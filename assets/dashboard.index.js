@@ -41,10 +41,10 @@ var Dashboard = {
 
 			if (self.edit_mode === true) {
 				self.dashboard.addClass('edit');
-				jQuery('.primary, .secondary').sortable('enable');
+				jQuery('#primary, #secondary').sortable('enable');
 			} else {
 				self.dashboard.removeClass('edit');
-				jQuery('.primary, .secondary').sortable('disable');
+				jQuery('#primary, #secondary').sortable('disable');
 			}
 
 		});
@@ -90,7 +90,7 @@ var Dashboard = {
 			self.showEditForm(panel_type, id);
 		});
 
-		jQuery('.primary, .secondary').sortable({
+		jQuery('#primary, #secondary').sortable({
 			items: '.panel',
 			connectWith: '.sortable-container',
 			placeholder: 'panel-placeholder',
@@ -105,7 +105,7 @@ var Dashboard = {
 			}
 		});
 
-		jQuery('.primary, .secondary').droppable({
+		jQuery('#primary, #secondary').droppable({
 			activeClass: 'hover',
 			hoverClass: 'active'
 		});
@@ -129,7 +129,7 @@ var Dashboard = {
 		var post_data = '';
 		var i = 0;
 
-		jQuery('.primary, .secondary').each(function(j) {
+		jQuery('#primary, #secondary').each(function(j) {
 			var sort_order = 1;
 			jQuery('.panel', this).each(function() {
 				post_data += 'panel[' + i + '][id]=' + jQuery(this).attr('id').replace(/^id-/,'') + '&';
@@ -240,7 +240,7 @@ var Dashboard = {
 						// insert new panel
 						if (panel.length == 0) {
 							self.hideEditForm(function() {
-								jQuery('.' + placement).append(html);
+								jQuery('#' + placement).append(html);
 								jQuery('.new-panel').slideDown('fast', function() {
 									jQuery(this).removeClass('new-panel');
 								})
@@ -250,13 +250,13 @@ var Dashboard = {
 						else {
 							self.hideEditForm(function() {
 								var column = panel.parent();
-								var column_name = ((panel.parent().hasClass('primary')) ? 'primary' : 'secondary');
+								var column_name = ((panel.parent().is('#primary')) ? 'primary' : 'secondary');
 								panel.fadeOut('fast', function() {
 									if (placement == column_name) {
 										jQuery(this).after(html).remove();
 									} else {
 										jQuery(this).remove();
-										jQuery('.' + placement).append(html);
+										jQuery('#' + placement).append(html);
 									}
 									jQuery('#id-' + id).hide().removeClass('new-panel').fadeIn('fast');
 								});
